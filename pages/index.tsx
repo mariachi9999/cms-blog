@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Categories from "../components/Categories";
 import PostCard from "../components/PostCard";
+import PostWidget from "../components/PostWidget";
 
 const posts = [
   { title: "React Testing", excerpt: "Learn React Testing" },
@@ -24,7 +26,10 @@ const Home: NextPage = () => {
           ))}
         </div>
         <div className="lg:col-span-4 col-span-1">
-          <div className="lg:sticky relative top-8"></div>
+          <div className="lg:sticky relative top-8">
+            <PostWidget />
+            <Categories />
+          </div>
         </div>
       </div>
     </div>
