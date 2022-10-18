@@ -6,7 +6,7 @@ const categories = [
     name: "React",
     slug: "react",
   },
-  { name: "web Development", slug: "web-dev" },
+  { name: "Web Development", slug: "web-dev" },
 ];
 
 const Header = () => {
@@ -20,7 +20,15 @@ const Header = () => {
             </span>
           </Link>
         </div>
-        <div className="hidden md:float-left md:contents"></div>
+        <div className="hidden md:float-left md:contents">
+          {categories.map((category) => (
+            <Link key={category.name} href={`/category/${category.slug}`}>
+              <span className="md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer">
+                {category.name}
+              </span>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
