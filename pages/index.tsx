@@ -4,16 +4,17 @@ import Categories from "../components/Categories";
 import Header from "../components/Header";
 import PostCard from "../components/PostCard";
 import PostWidget from "../components/PostWidget";
+import { getPosts } from "../services";
 
-const posts = [
-  { title: "React Testing", excerpt: "Learn React Testing" },
-  {
-    title: "React Testing with Tailwind",
-    excerpt: "Learn React Testing with Tailwind",
-  },
-];
+// const posts = [
+//   { title: "React Testing", excerpt: "Learn React Testing" },
+//   {
+//     title: "React Testing with Tailwind",
+//     excerpt: "Learn React Testing with Tailwind",
+//   },
+// ];
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ posts }) => {
   return (
     <div className="container mx-auto px-10 mb-8">
       <Head>
@@ -39,3 +40,11 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getStaticProps() {
+  const posts = (await getPosts()) || [];
+
+  return {
+    props: { posts },
+  };
+}
