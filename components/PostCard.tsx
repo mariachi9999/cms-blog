@@ -24,7 +24,6 @@ interface Post {
 }
 
 const PostCard: React.FC<Post> = (props: Post) => {
-  console.log(props.post);
   const { post } = props;
 
   return (
