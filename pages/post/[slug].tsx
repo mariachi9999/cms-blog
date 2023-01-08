@@ -10,7 +10,7 @@ import { getPosts, getPostDetails } from "../../services";
 const PostDetails = ({ post }) => {
   return (
     <div className="container mx-auto px-10 mb-8">
-      <div className="grid grid-cols-2 lg:grids-cols-12 gap-12">
+      <div className="grid grid-cols-1 lg:grids-cols-12 gap-12">
         <div className="col-span1 lg:col-span-8">
           <PostDetail post={post} />
           <Author author={post.author} />
