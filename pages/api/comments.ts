@@ -4,7 +4,7 @@
  *
  */
 
-import { GraphQLClient, gql } from "graphql";
+import { GraphQLClient, gql } from "graphql-request";
 import { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
@@ -17,9 +17,11 @@ export default async function comments(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  console.log(req.body);
+
   const { name, email, slug, comment } = req.body;
 
-  const grahQLClient = new GraphQLClient(graphqlAPI, {
+  const grahQLClient = new GraphQLClient(graphqlAPI as string, {
     headers: {
       authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`,
     },
@@ -31,6 +33,7 @@ export default async function comments(
       $email: String!
       $comment: String!
       $slug: String!
+      $post: 
     ) {
       createComment(
         data: {
@@ -45,7 +48,7 @@ export default async function comments(
     }
   `;
 
-  const result = await GraphQLClient.request(query, req.body);
+  const result = await grahQLClient.request(query, req.body);
 
   return res.status(200).send(result);
 }
