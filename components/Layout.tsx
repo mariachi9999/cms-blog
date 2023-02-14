@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import FeaturedBox from "./FeaturedBox";
 import Header from "./Header";
 
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
 export const Layout: React.FC<Props> = ({ children }) => (
   <div>
     <Header />
+    <FeaturedBox />
     {children}
   </div>
 );
